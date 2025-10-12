@@ -29,7 +29,7 @@ public class ChatController {
     public String selectTopic(@RequestBody Map<String, String> body, HttpSession session) {
         String topic = body.get("topic");
         session.setAttribute("topic", topic);
-        return "You are now chatting about: " + topic;
+        return "You are now chatting about: " + topicConfig.getTopicContext(topic);
     }
 
 //    @PostMapping("/message")
