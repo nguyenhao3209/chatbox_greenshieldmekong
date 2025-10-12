@@ -1,14 +1,14 @@
 server:
-  port: ${SERVER_PORT}
+  port: 8080
 
 spring:
   application:
     name: chatbox
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password:  ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:mysql://localhost:3306/greenshield_db?createDatabaseIfNotExist=true
+    username: root
+    password:  root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -21,4 +21,4 @@ spring:
 
   gemini:
     api:
-      key: ${GEMINI_KEY}
+      key: AIzaSyB0W8IUauX2ZrZZ6CnkRWlu1w_2pWE5_6E
