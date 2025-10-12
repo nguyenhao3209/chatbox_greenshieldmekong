@@ -1,0 +1,10 @@
+package com.chatbox.chatbox.repository;
+
+import com.chatbox.chatbox.model.Product;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
+public interface ProductRepository extends CrudRepository<Product, Long> {
+    List<Product> findAll();
+}
