@@ -11,6 +11,12 @@ spring:
     password:  root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: 20971520
+      enabled: true
+
   jpa:
     hibernate:
       ddl-auto: update

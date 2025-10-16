@@ -13,8 +13,7 @@ import java.util.Map;
 public class GeminiService {
 
     private final WebClient webClient;
-
-    public GeminiService(@Value("${GEMINI_KEY}") String apiKey) {
+    public GeminiService(@Value("${spring.gemini.api.key}") String apiKey) {
         if (apiKey.isEmpty()) {
             throw new IllegalStateException("GEMINI_KEY not set!");
         }
@@ -79,7 +78,7 @@ public class GeminiService {
         );
 
         Map<String, Object> response = webClient.post()
-                .uri("/chat/completions")
+                .uri("/chat/completions2")
                 .bodyValue(payload)
                 .retrieve()
                 .bodyToMono(Map.class)

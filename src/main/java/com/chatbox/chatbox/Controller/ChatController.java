@@ -5,12 +5,12 @@ import com.chatbox.chatbox.dto.ChatRequest;
 import com.chatbox.chatbox.model.ConversationSession;
 import com.chatbox.chatbox.service.ChatService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Base64;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
@@ -41,50 +41,49 @@ public class ChatController {
 //        return chatService.chatWithKnowledge(chatRequest);
 //    }
 
-    @PostMapping(value = "/message", consumes = {"multipart/form-data", "application/json"})
-    public String chat(
-            @RequestPart(value = "message", required = false) String message,
-            @RequestPart(value = "image", required = false) MultipartFile image,
-            @RequestBody(required = false) ChatRequest jsonBody,
+    @PostMapping(value = "/message", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String chatWithImage(
+            @RequestParam(value = "message", required = false) String message,
+            @RequestParam(value = "image", required = false) MultipartFile image,
             HttpSession session
-    ) throws IOException {
+    ) {
+        try {
+            String topic = (String) session.getAttribute("topic");
+            if (topic == null) return "Please select a topic first.";
 
-        String topic = (String) session.getAttribute("topic");
-        if (topic == null) {
-            return "Please select a topic first using /select-topic.";
-        }
+            if ((message == null || message.isBlank()) && (image == null || image.isEmpty())) {
+                return "Message or image cannot be empty.";
+            }
 
-        // Xác định nội dung tin nhắn
-        String userMessage = (message != null) ? message
-                : (jsonBody != null ? jsonBody.getMessage() : null);
-        if (userMessage == null || userMessage.isBlank()) {
-            return "Message cannot be empty.";
-        }
+            ConversationSession convo = (ConversationSession) session.getAttribute("conversation");
+            if (convo == null || !topic.equals(convo.getTopic())) {
+                convo = new ConversationSession(topic);
+                session.setAttribute("conversation", convo);
+            }
 
-        // Lấy hoặc tạo ConversationSession
-        ConversationSession convo = (ConversationSession) session.getAttribute("conversation");
-        if (convo == null || !topic.equals(convo.getTopic())) {
-            convo = new ConversationSession(topic);
+            String userMessage = (message != null && !message.isBlank()) ? message : "[Image uploaded]";
+            convo.addMessage("User", userMessage);
+
+            String reply;
+            ChatRequest chatRequest = new ChatRequest(userMessage, topic);
+
+            if (image != null && !image.isEmpty()) {
+                System.out.println("✅ Image received: " + image.getOriginalFilename() + " (" + image.getSize() + " bytes)");
+                String imageBase64 = Base64.getEncoder().encodeToString(image.getBytes());
+                reply = chatService.chatWithImage(chatRequest, convo, imageBase64);
+            } else {
+                reply = chatService.chatWithKnowledge(chatRequest, convo);
+            }
+
+            convo.addMessage("Gemini", reply);
             session.setAttribute("conversation", convo);
+
+            return reply;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error: " + e.getMessage();
         }
-
-        convo.addMessage("User", userMessage);
-
-        String reply;
-
-        if (image != null && !image.isEmpty()) {
-            String imageBase64 = Base64.getEncoder().encodeToString(image.getBytes());
-            ChatRequest chatRequest = new ChatRequest(userMessage, topic);
-            reply = chatService.chatWithImage(chatRequest, convo, imageBase64);
-        } else {
-            ChatRequest chatRequest = new ChatRequest(userMessage, topic);
-            reply = chatService.chatWithKnowledge(chatRequest, convo);
-        }
-
-        convo.addMessage("Gemini", reply);
-        session.setAttribute("conversation", convo);
-
-        return reply;
     }
 
     @GetMapping("/topics")
