@@ -27,18 +27,18 @@ public class KnowledgeLoaderService {
             knowledgeBuilder.append("⚠️ Could not read knowledge file.\n");
         }
 
-        // Đọc dữ liệu sản phẩm từ database
-        List<Product> products = productRepository.findAll();
-
-        knowledgeBuilder.append("=== PRODUCT CATALOG ===\n");
-        for (Product p : products) {
-            knowledgeBuilder
-                    .append("Product: ").append(p.getName()).append("\n")
-                    .append("Category: ").append(p.getCategory()).append("\n")
-                    .append("Material: ").append(p.getMaterial()).append("\n")
-                    .append("Price: ").append(p.getPrice()).append("\n")
-                    .append("Description: ").append(p.getDescription()).append("\n\n");
-        }
+//        // Đọc dữ liệu sản phẩm từ database
+//        List<Product> products = productRepository.findAll();
+//
+//        knowledgeBuilder.append("=== PRODUCT CATALOG ===\n");
+//        for (Product p : products) {
+//            knowledgeBuilder
+//                    .append("Product: ").append(p.getName()).append("\n")
+//                    .append("Category: ").append(p.getCategory()).append("\n")
+//                    .append("Material: ").append(p.getMaterial()).append("\n")
+//                    .append("Price: ").append(p.getPrice()).append("\n")
+//                    .append("Description: ").append(p.getDescription()).append("\n\n");
+//        }
 
         return knowledgeBuilder.toString();
     }

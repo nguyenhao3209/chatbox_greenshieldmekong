@@ -5,11 +5,11 @@ spring:
   application:
     name: chatbox
 
-  datasource:
-    url: jdbc:mysql://localhost:3306/greenshield_db?createDatabaseIfNotExist=true
-    username: root
-    password:  root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/greenshield_db?createDatabaseIfNotExist=true
+#    username: root
+#    password:  root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
   servlet:
     multipart:

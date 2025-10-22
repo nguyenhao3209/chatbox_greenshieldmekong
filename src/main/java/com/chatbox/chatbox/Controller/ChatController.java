@@ -40,19 +40,13 @@ public class ChatController {
 //        return chatService.chatWithKnowledge(chatRequest);
 //    }
 
-    @PostMapping(value = "/message", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String chatWithImage(
-            @RequestParam(value = "message", required = false) String message,
-            @RequestParam(value = "image", required = false) MultipartFile image,
-            HttpSession session
-    ) {
+    @PostMapping(value = "/message", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String chatOnlyMessage(@RequestBody Map<String, String> payload, HttpSession session) {
         try {
+            String message = payload.get("message");
             String topic = (String) session.getAttribute("topic");
             if (topic == null) return "Please select a topic first.";
-
-            if ((message == null || message.isBlank()) && (image == null || image.isEmpty())) {
-                return "Message or image cannot be empty.";
-            }
+            if (message == null || message.isBlank()) return "Message cannot be empty.";
 
             ConversationSession convo = (ConversationSession) session.getAttribute("conversation");
             if (convo == null || !topic.equals(convo.getTopic())) {
@@ -60,19 +54,10 @@ public class ChatController {
                 session.setAttribute("conversation", convo);
             }
 
-            String userMessage = (message != null && !message.isBlank()) ? message : "[Image uploaded]";
-            convo.addMessage("User", userMessage);
+            convo.addMessage("User", message);
 
-            String reply;
-            ChatRequest chatRequest = new ChatRequest(userMessage, topic);
-
-            if (image != null && !image.isEmpty()) {
-                System.out.println("✅ Image received: " + image.getOriginalFilename() + " (" + image.getSize() + " bytes)");
-                String imageBase64 = Base64.getEncoder().encodeToString(image.getBytes());
-                reply = chatService.chatWithImage(chatRequest, convo, imageBase64);
-            } else {
-                reply = chatService.chatWithKnowledge(chatRequest, convo);
-            }
+            ChatRequest chatRequest = new ChatRequest(message, topic);
+            String reply = chatService.chatWithKnowledge(chatRequest, convo);
 
             convo.addMessage("Gemini", reply);
             session.setAttribute("conversation", convo);
