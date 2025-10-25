@@ -47,28 +47,31 @@ GreenShield’s core values are the pillars that guide our daily operations, dec
 products:
 GreenShield Mekong’s products are crafted from 100% natural fibers and biodegradable materials. They are designed to meet the functional needs of modern packaging while promoting environmental and cultural values.
 
-Product Categories:
-1. **Eco Fruit Boxes** – Designed for exporters and local markets. Made from water hyacinth and rice husk, offering ventilation, strength, and a natural appearance.
-2. **Handwoven Baskets & Containers** – Elegant storage and decorative products handcrafted by artisans in rural Mekong villages.
-3. **Bagasse & Rice Husk Trays** – Heat-resistant, compostable food trays and plates that replace plastic foam.
-4. **Gift Wrapping & Custom Packaging** – Personalized solutions for brands, events, and eco-conscious businesses.
+Product Categories
 
+Water Hyacinth Food & Fruit Boxes
+Eco-friendly boxes made entirely from pressed water hyacinth fibers and food-safe bio-adhesives. These boxes are sturdy, lightweight, and fully biodegradable — ideal for storing and transporting fruits and fresh foods while maintaining their natural quality.
+
+Water Hyacinth Coasters
+Handcrafted coasters made from dried and compressed water hyacinth, offering natural insulation, moisture resistance, and a rustic aesthetic. Perfect for cafés, restaurants, and eco-conscious households.
+
+Lotus Leaf & Hyacinth Leaf Plates
+Innovative, biodegradable plates made from naturally treated lotus and water hyacinth leaves, pressed into shape without synthetic chemicals. They are heat-resistant, compostable, and safe for direct food contact — a sustainable replacement for single-use plastic tableware.
 Each design balances **durability, biodegradability, and aesthetics**, suitable for both traditional and modern markets.
 
-materials:
-GreenShield’s raw materials are fully natural and renewable:
-- **Water Hyacinth (Eichhornia crassipes):** A fast-growing aquatic plant abundant in the Mekong Delta. Processed, sun-dried, and molded into fibers for packaging.
-- **Rice Husk:** Agricultural residue used to make strong, lightweight composites.
-- **Sugarcane Bagasse:** Used for heat-resistant trays and containers.
-- **Bamboo and Coconut Fiber:** Reinforcing agents that improve structure and elasticity.
-All dyes used are natural: green from pandan leaves, brown from rice husk ash, and black from bamboo charcoal.
+materials
+GreenShield’s packaging materials are made entirely from natural, biodegradable, and food-safe sources, ensuring both sustainability and consumer safety.
 
-color_philosophy:
-We embrace natural colors to express authenticity and eco-friendliness:
-- **Earth-tone Brown/Beige:** From rice husk and bagasse – conveys simplicity and sustainability.
-- **Soft Green:** From chlorophyll, pandan leaves, and tea – represents freshness and organic life.
-- **Charcoal Gray/Black:** From bamboo charcoal – adds elegance and contrast.
-These tones help products blend seamlessly with brand identity and eco-conscious aesthetics.
+Water Hyacinth (Eichhornia crassipes):
+A fast-growing aquatic plant native to the Mekong Delta. After being cleaned, sun-dried, and processed into fine fibers, it becomes the main structural material for eco-friendly boxes, coasters, and trays.
+
+Lotus Leaves (Nelumbo nucifera):
+Naturally water-resistant and antibacterial, lotus leaves are collected, dried, and pressed into eco plates and food wraps. They provide a smooth surface, subtle aroma, and organic aesthetic.
+
+Food-Safe Bio-Adhesive:
+Made from cassava starch and corn extract, this natural glue binds plant fibers without any toxic chemicals. It is fully biodegradable, heat-resistant, and safe for direct food contact.
+
+All GreenShield materials are chemical-free, compostable, and designed to meet future EU Green Packaging standards (2026).
 
 ordering:
 To order GreenShield products:
@@ -87,7 +90,7 @@ Packaging materials used for delivery are recyclable or compostable. Each shipme
 
 payment:
 Payment options:
-- Domestic bank transfers (Vietcombank, Techcombank, ACB)
+- Domestic bank transfers (Vietcombank, Techcombank, ACB,...)
 - PayPal or Stripe for international buyers
 - Letter of Credit (L/C) for B2B orders
 Refunds or replacements are provided for any damage during transit.
